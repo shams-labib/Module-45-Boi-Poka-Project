@@ -19,7 +19,7 @@ const Book = ({data}) => {
 
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 md:pb-8 p-7 '>
                 {
-                data.map((singleBook, index) => <Books singleBook={singleBook} key={index}></Books>)
+                data.map((singleBook) => <Books singleBook={singleBook} key={singleBook.bookId}></Books>)
             }
             </div>
         </div>

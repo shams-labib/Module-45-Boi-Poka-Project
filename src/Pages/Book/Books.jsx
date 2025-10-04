@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Books = ({singleBook}) => {
-    console.log(singleBook)
+    // console.log(singleBook)
     return (
         <div className="card bg-base-100 border-1 border-gray-100 shadow-sm">
   <figure className=" w-[90%] mt-4 mx-auto bg-gray-100">
@@ -14,7 +14,7 @@ const Books = ({singleBook}) => {
   <div className="p-7 space-y-4 ">
     <div className='flex justify-between items-center text-lg font-semibold text-green-400 '>
        {
-        singleBook.tags.map(data => <button>{data}</button>)
+        singleBook.tags.map((data, index) => <button key={index}>{data}</button>)
        }
         
     </div>
