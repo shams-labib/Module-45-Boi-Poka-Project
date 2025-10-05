@@ -1,5 +1,11 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addItemStoreDB } from '../../utility/Function';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+
+const MySwal = withReactContent(Swal)
 
 const BookDetails = () => {
 
@@ -9,7 +15,18 @@ const BookDetails = () => {
     const data = useLoaderData()
 
     const singleBook = data.find(book => book.bookId == bookId);
-    console.log(singleBook)
+
+
+    const handleBookRead = (id)=>{
+        MySwal.fire({
+  title: "Good job!",
+  text: "You clicked the button!",
+  icon: "success"
+});
+                addItemStoreDB(id);
+
+
+    }
     
     
 
@@ -29,7 +46,7 @@ const BookDetails = () => {
                 <div className='flex justify-between '>
                     <p className='font-bold'>Tag</p>
                     {
-                        singleBook.tags.map(data => <p className='text-green-500'>{data}</p>)
+                        singleBook.tags.map((data, index) => <p key={index} className='text-green-500'>{data}</p>)
                     }
                 </div>
             </div>
@@ -52,7 +69,7 @@ const BookDetails = () => {
                       <p className='font-bold'>{singleBook.rating}</p>
                 </div>
                 <div className='md:w-[50%] flex gap-5 items-center'>
-                     <button className='btn border-1 border-gray-300 px-7 py-5 bg-white'>Read</button>
+                     <button onClick={()=> handleBookRead(id)} className='btn border-1 border-gray-300 px-7 py-5 bg-white'>Read</button>
                      <button className='btn  py-5 px-7 bg-[#50B1C9] text-white'>Wishlist</button>
                 </div>
             </div>
