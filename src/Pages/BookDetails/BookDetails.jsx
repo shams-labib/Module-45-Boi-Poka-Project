@@ -18,11 +18,13 @@ const BookDetails = () => {
 
 
     const handleBookRead = (id)=>{
+
         MySwal.fire({
   title: "Good job!",
   text: "You clicked the button!",
   icon: "success"
 });
+
                 addItemStoreDB(id);
 
 
